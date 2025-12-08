@@ -1,16 +1,5 @@
 ---
-const artists = [
-	{
-		name: "La Gaille",
-		tagline: "Natif du Sud de la France, il a grandi au son des cigales et des rêves de scène.",
-		image: import.meta.env.BASE_URL + "artist_lagaille.jpg"
-	},
-	{
-		name: "Laura",
-		tagline: "Humoriste sous couverture",
-		image: import.meta.env.BASE_URL + "artist_lagaillegue.jpg"
-	}
-];
+import { artists } from '../data/artists';
 ---
 
 <section class="artists">
@@ -18,15 +7,17 @@ const artists = [
 		<h2>Nos Artistes</h2>
 		<div class="carousel">
 			{artists.map(artist => (
-				<div class="artist-card">
-					<div class="image-wrapper">
-						<img src={artist.image} alt={artist.name} loading="lazy" />
+				<a href={`${import.meta.env.BASE_URL}artiste/${artist.slug}`} class="artist-card-link">
+					<div class="artist-card">
+						<div class="image-wrapper">
+							<img src={artist.image} alt={artist.name} loading="lazy" />
+						</div>
+						<div class="card-content">
+							<h3>{artist.name}</h3>
+							<p>{artist.tagline}</p>
+						</div>
 					</div>
-					<div class="card-content">
-						<h3>{artist.name}</h3>
-						<p>{artist.tagline}</p>
-					</div>
-				</div>
+				</a>
 			))}
 		</div>
 	</div>
@@ -54,16 +45,23 @@ const artists = [
 		-webkit-overflow-scrolling: touch;
 	}
 	
-	.artist-card {
+
+	.artist-card-link {
+		text-decoration: none;
 		flex: 0 0 300px;
 		scroll-snap-align: start;
+		display: block;
+	}
+
+	.artist-card {
 		background: var(--color-card-bg);
 		border-radius: 1rem;
 		overflow: hidden;
 		transition: transform 0.3s ease;
+		height: 100%;
 	}
 	
-	.artist-card:hover {
+	.artist-card-link:hover .artist-card {
 		transform: scale(1.02);
 	}
 	
