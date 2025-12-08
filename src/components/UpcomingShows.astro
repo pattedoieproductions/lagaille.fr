@@ -1,23 +1,26 @@
 ---
 const shows = [
 	{
-		title: "La Nuit du Rire",
-		date: "15 Octobre 2025",
-		location: "Le Paname Art Café, Paris",
-		description: "Un plateau d'exception réunissant 5 de nos meilleurs artistes."
+		title: "La Gaille : Entre rire et réalité",
+		date: "14 Décembre 2025",
+		location: "Boui Boui Café Comique, Lyon",
+		description: "Diplôme d'ingénieur en poche, il se lance dans la vie active, mais quelque chose cloche. Toujours à se poser mille questions, il décide de troquer son clavier contre un micro et de monter sur scène pour en parler.",
+		url: "https://www.billetreduc.com/spectacle/la-gaille-entre-rire-et-realite-384355"
 	},
 	{
-		title: "Stand-up Factory",
-		date: "22 Octobre 2025",
-		location: "La Scène Barbès, Paris",
-		description: "Découvrez les pépites de demain avant tout le monde."
+		title: "La Gaille : Entre rire et réalité",
+		date: "21 Décembre 2025",
+		location: "Boui Boui Café Comique, Lyon",
+		description: "Diplôme d'ingénieur en poche, il se lance dans la vie active, mais quelque chose cloche. Toujours à se poser mille questions, il décide de troquer son clavier contre un micro et de monter sur scène pour en parler.",
+		url: "https://www.billetreduc.com/spectacle/la-gaille-entre-rire-et-realite-384355"
 	},
 	{
-		title: "Pattedoie Comedy Club",
-		date: "5 Novembre 2025",
-		location: "Théâtre de Dix Heures, Paris",
-		description: "Notre résidence mensuelle avec une programmation surprise."
-	}
+		title: "La Gaille : Entre rire et réalité",
+		date: "28 Décembre 2025",
+		location: "Boui Boui Café Comique, Lyon",
+		description: "Diplôme d'ingénieur en poche, il se lance dans la vie active, mais quelque chose cloche. Toujours à se poser mille questions, il décide de troquer son clavier contre un micro et de monter sur scène pour en parler.",
+		url: "https://www.billetreduc.com/spectacle/la-gaille-entre-rire-et-realite-384355"
+	},
 ];
 ---
 
@@ -30,7 +33,7 @@ const shows = [
 				<h3>{show.title}</h3>
 				<p class="location">{show.location}</p>
 				<p class="description">{show.description}</p>
-				<a href="#" class="btn-ticket">Réserver</a>
+				<a href={show.url} class="btn-ticket" target="_blank" rel="noopener noreferrer">Réserver</a>
 			</article>
 		))}
 	</div>
