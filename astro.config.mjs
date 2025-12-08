@@ -3,11 +3,11 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'http://pattedoie.pernelle.eu',
-    base: '/pattedoie/',
+    site: 'https://pattedoie.pernelle.eu',
+    base: '/',
     vite: {
         server: {
-            allowedHosts: ['http://pattedoie.pernelle.eu'],
+            allowedHosts: ['https://pattedoie.pernelle.eu'],
         },
     },
 });
