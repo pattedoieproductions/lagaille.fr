@@ -5,6 +5,46 @@ interface Props {
 }
 
 const { title, description = "La Gaille, humoriste stand-up lyonnais. One-man-show « Entre Rire et Réalité »." } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/photo_la_gaille_1.jpg', Astro.site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "La Gaille",
+      "url": "https://lagaille.fr",
+      "image": ogImageURL.href,
+      "description": "Humoriste stand-up lyonnais, auteur du one-man-show « Entre Rire et Réalité ».",
+      "jobTitle": "Humoriste",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lyon",
+        "addressCountry": "FR"
+      },
+      "sameAs": ["https://www.instagram.com/la_gaille_/"]
+    },
+    {
+      "@type": "TheaterEvent",
+      "name": "Entre Rire et Réalité",
+      "description": "One-man-show de La Gaille — 60 minutes, tout public. Un spectacle mêlant autodérision, observation du quotidien et réflexion sur les choix de vie.",
+      "performer": {
+        "@type": "Person",
+        "name": "La Gaille"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Pattedoie Productions",
+        "email": "julien.gallego.pro@gmail.com"
+      },
+      "url": "https://lagaille.fr",
+      "image": ogImageURL.href,
+      "inLanguage": "fr"
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -13,16 +53,28 @@ const { title, description = "La Gaille, humoriste stand-up lyonnais. One-man-sh
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/photo_la_gaille_1.jpg" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
     <title>{title}</title>
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YB40WS0EY9"></script>
     <script>
