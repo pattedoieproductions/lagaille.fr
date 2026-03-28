@@ -1,7 +1,7 @@
 import type { ArticlesListResponse, ArticleResponse } from "../types/blog";
 
-const API_URL = import.meta.env.PUBLIC_WISPRA_API_URL || "https://api.wispra.fr";
-const PUBLIC_CODE = import.meta.env.PUBLIC_WISPRA_BLOG_API_KEY;
+const API_URL = "https://api.wispra.fr";
+const PUBLIC_CODE = "pk_blog_58f4f075dfb6482c876a1650bda4ef89";
 
 export async function getArticles(): Promise<ArticlesListResponse> {
   const response = await fetch(

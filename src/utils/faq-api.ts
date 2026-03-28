@@ -1,7 +1,7 @@
 import type { FaqData } from "../types/faq";
 
-const API_URL = import.meta.env.PUBLIC_WISPRA_API_URL || "https://api.wispra.fr";
-const PUBLIC_CODE = import.meta.env.PUBLIC_WISPRA_FAQ_API_KEY;
+const API_URL = "https://api.wispra.fr";
+const PUBLIC_CODE = "pk_faq_24f1a4072c4545c0a5c32f8ebb71ca6b";
 
 export async function getFaq(): Promise<FaqData> {
   const response = await fetch(`${API_URL}/faq/public/${PUBLIC_CODE}`, {
